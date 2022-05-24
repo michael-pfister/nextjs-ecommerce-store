@@ -8,8 +8,8 @@ An Ecommerce Store that sells the newest Graphics Cards, typically **the ones th
   - products page
     - page for each single product
   - Cart page
-  - Checkout page
-    - Thank You page
+    - Checkout page
+      - Thank You page
 
 ### Page Layout
 1. header
