@@ -1,7 +1,11 @@
+import { SlideShow } from './components/products/slideshow';
 import { products } from './simulated_data/database';
 
 export default function Products(props) {
-  return <div>products</div>;
+  return (
+  <div>
+    <SlideShow />
+  </div>);
 }
 
 export async function getServerSideProps(context) {
