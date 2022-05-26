@@ -3,15 +3,42 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const imageSrcs = ['/images/slideshow/RTX-30-Series.jpg',
-                '/images/slideshow/RX-6000-Series.jpg'];
+                '/images/slideshow/RX-6000-Series.jpg',
+            ];
 
 let currentImageIndex = 0;
 
 const slideshowStyles = css`
     position: relative;
     width: 100%;
-    height: 20rem;
-    margin: 1em 0;
+    height: 22rem;
+    margin: 2em 0;
+    background-color: black;
+
+    img{
+        animation: identifier 15s infinite;
+    }
+
+    @keyframes identifier {
+        0% {
+            filter: brightness(0);
+            transform: scale(1.1);
+
+        };
+        2% {
+            filter: brightness(1);
+            transform: scale(1);
+        };
+
+        98%{
+            filter: brightness(1);
+            transform: scale(1);
+        }
+        100%{
+            filter: brightness(0);
+            transform: scale(1.1);
+        }
+    }
 `;
 
 function changeImage(setBanner){
@@ -25,12 +52,12 @@ export function SlideShow(){
     useEffect(()=>{
         const interval = setInterval(() => {
             changeImage(setBanner);
-          }, 10000);
+          }, 15000);
         
         return () => clearInterval(interval);
     }, []);
 
-    return <div css={slideshowStyles}>
+    return <section css={slideshowStyles}>
         <Image src={banner} layout="fill" objectFit="cover"/>
-    </div>;
+    </section>;
 }

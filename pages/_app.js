@@ -1,5 +1,4 @@
 import { css, Global } from '@emotion/react';
-import Head from 'next/head';
 import { Footer } from './components/PageLayout/footer';
 import { Header } from './components/PageLayout/header';
 
