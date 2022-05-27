@@ -5,11 +5,20 @@ import { products } from './simulated_data/database';
 
 export default function Products(props) {
   return (
-  <div>
-    <SlideShow />
-    <ProductsGrid products={props.products.slice(0,3)} heading='Featured' gridColumns={3} />
-    <ProductsGrid products={props.products} heading='All Products' gridColumns={5} />
-  </div>);
+    <div>
+      <SlideShow />
+      <ProductsGrid
+        products={props.products.slice(0, 3)}
+        heading="Featured"
+        gridColumns={3}
+      />
+      <ProductsGrid
+        products={props.products}
+        heading="All Products"
+        gridColumns={5}
+      />
+    </div>
+  );
 }
 
 export function getServerSideProps() {

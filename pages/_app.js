@@ -12,6 +12,33 @@ const globalStyles = css`
   body {
     margin: 0;
   }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin: 10px 0;
+    width: 50%;
+    height: 2em;
+    font-family: inherit;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.95);
+      transition: ease;
+    }
+
+    &:disabled {
+      filter: opacity(0.2);
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
 `;
 
 function MyApp({ Component, pageProps }) {

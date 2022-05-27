@@ -7,5 +7,9 @@ const footerStyles = css`
 `;
 
 export function Footer() {
-  return <footer css={footerStyles}>Copyright &copy; 2022 GraphicsCart</footer>;
+  return (
+    <footer id="footer" css={footerStyles}>
+      Copyright &copy; 2022 GraphicsCart
+    </footer>
+  );
 }
