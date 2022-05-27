@@ -21,7 +21,6 @@ const productSectionStyles = css`
     align-items: center;
 
     hr {
-      background-color: black;
       width: 40%;
       margin: 1em 0;
     }
