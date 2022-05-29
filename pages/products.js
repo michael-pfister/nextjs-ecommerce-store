@@ -1,6 +1,6 @@
 import React from 'react';
-import { ProductsGrid } from './components/products/productsgrid';
-import { SlideShow } from './components/products/slideshow';
+import { ProductsGrid } from './components/Products/Productsgrid';
+import { SlideShow } from './components/Products/Slideshow';
 import { products } from './simulated_data/database';
 
 export default function Products(props) {

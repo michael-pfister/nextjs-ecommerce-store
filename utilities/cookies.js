@@ -7,10 +7,10 @@ export class Cookies {
       })
       .reduce((accumulator, [key, value]) => {
         return { ...accumulator, [key.trim()]: decodeURIComponent(value) };
-      });
+      },{});
   }
 
   constructor() {
-    this.cookies = document.cookie;
+    this.cookies = this.getAllCookies();
   }
 }
