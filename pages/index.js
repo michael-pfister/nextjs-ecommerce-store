@@ -50,10 +50,12 @@ const mainStyles = css`
 `;
 
 const videoBannerStyles = css`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
   width: 100%;
-  height: ${(1080 / 1920) * 100}vw;
+  height: 600px;
   background-color: transparent;
   align-items: center;
   justify-content: center;
@@ -63,6 +65,10 @@ const videoBannerStyles = css`
     width: 100%;
     height: ${(1080 / 1920) * 100}vw;
     z-index: -1;
+    //centering
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -94,7 +100,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <h2>fast delivery</h2>
+                  <h2>super fast delivery</h2>
                   <p>
                     Neat own nor she said see walk. And charm add green you
                     these. Sang busy in this drew ye fine.
