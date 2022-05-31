@@ -1,4 +1,13 @@
+// only front-end
 export class Cookies {
+  constructor() {
+    this.cookies = this.getAllCookies();
+  }
+
+  /* set cookies(value) {
+    this.setAllCookies();
+  } */
+
   getAllCookies() {
     return document.cookie
       .split(';')
@@ -7,10 +16,14 @@ export class Cookies {
       })
       .reduce((accumulator, [key, value]) => {
         return { ...accumulator, [key.trim()]: decodeURIComponent(value) };
-      },{});
+      }, {});
   }
 
-  constructor() {
-    this.cookies = this.getAllCookies();
+  setAllCookies() {
+    console.log(JSON.stringify(this.cookies));
+  }
+
+  toStringFormat() {
+    return JSON.stringify(this.cookies).replaceAll();
   }
 }
