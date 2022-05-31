@@ -50,12 +50,14 @@ const mainStyles = css`
 `;
 
 const videoBannerStyles = css`
-  position: relative;
+  position: absolute;
+  z-index: -1;
+  top: 0;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  width: 100%;
-  height: 600px;
+  width: 100vw;
+  height: 100vh;
   background-color: transparent;
   align-items: center;
   justify-content: center;
@@ -64,7 +66,8 @@ const videoBannerStyles = css`
     position: absolute;
     width: 100%;
     height: ${(1080 / 1920) * 100}vw;
-    z-index: -1;
+    background-color: black;
+    z-index: -2;
     //centering
     top: 50%;
     left: 50%;

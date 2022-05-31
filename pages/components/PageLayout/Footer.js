@@ -1,14 +1,15 @@
 import { css } from '@emotion/react';
 
-const footerStyles = css`
-  padding: 10px 20px;
-  color: white;
-  background-color: black;
-`;
-
-export function Footer() {
+export function Footer(props) {
   return (
-    <footer id="footer" css={footerStyles}>
+    <footer
+      id="footer"
+      css={props.footerStyles}
+      style={{
+        backgroundColor: props.backgroundColor,
+        position: props.position,
+      }}
+    >
       Copyright &copy; 2022 GraphicsCart
     </footer>
   );

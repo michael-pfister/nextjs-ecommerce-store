@@ -2,33 +2,12 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const headerStyles = css`
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  justify-content: space-between;
-  color: white;
-  background-color: black;
-
-  h1 {
-    margin: 0;
-  }
-
-  ul {
-    display: inherit;
-    list-style: none;
-    gap: 20px;
-
-    a {
-      text-decoration: none;
-      color: white;
-    }
-  }
-`;
-
-export function Header() {
+export function Header(props) {
   return (
-    <header css={headerStyles}>
+    <header
+      css={props.headerStyles}
+      style={{ backgroundColor: props.backgroundColor }}
+    >
       {/* <Image alt="GraphicsCart logo" /> */}
       <h1>GraphicsCart</h1>
       <ul>
