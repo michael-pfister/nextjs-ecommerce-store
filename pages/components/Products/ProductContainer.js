@@ -85,7 +85,7 @@ export function ProductContainer({ productInformation }) {
           ) : (
             <span style={{ color: 'Red' }}>out of Stock</span>
           )}
-          <span>{productInformation.price}</span>
+          <span>{productInformation.price} €</span>
         </div>
       </a>
       <button disabled={!productInformation.inStock}>add to cart</button>

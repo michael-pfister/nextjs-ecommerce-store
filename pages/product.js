@@ -91,7 +91,7 @@ export default function Product(props) {
           et magnis dis parturient montes, nascetur ridiculus mus.
         </p>
         <br />
-        <span data-test-id="product-price">{item.price}</span>
+        <span data-test-id="product-price">{item.price} €</span>
         <div className="quantityDiv" data-test-id="product-quantity">
           <button
             onClick={() => {
