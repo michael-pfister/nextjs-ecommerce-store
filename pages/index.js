@@ -67,7 +67,7 @@ const videoBannerStyles = css`
     width: 100%;
     height: ${(1080 / 1920) * 100}vw;
     background-color: black;
-    z-index: -2;
+    z-index: -1;
     //centering
     top: 50%;
     left: 50%;

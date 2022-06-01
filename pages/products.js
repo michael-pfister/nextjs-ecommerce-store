@@ -8,14 +8,14 @@ export default function Products(props) {
     <div>
       <SlideShow />
       <ProductsGrid
-        products={props.products.slice(0, 3)}
+        products={props.products.slice(0, 2)}
         heading="Featured"
-        gridColumns={3}
+        gridColumns={2}
       />
       <ProductsGrid
         products={props.products}
         heading="All Products"
-        gridColumns={5}
+        gridColumns={3}
       />
     </div>
   );

@@ -1,12 +1,19 @@
 import { css } from '@emotion/react';
 
+const footerStyles = css`
+  padding: 10px 20px;
+  color: white;
+  background-color: transparent;
+  bottom: 0;
+`;
+
 export function Footer(props) {
   return (
     <footer
       id="footer"
-      css={props.footerStyles}
+      css={footerStyles}
       style={{
-        backgroundColor: props.backgroundColor,
+        color: props.textColor,
         position: props.position,
       }}
     >

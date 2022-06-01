@@ -3,58 +3,56 @@ import Image from 'next/image';
 
 const productContainerStyles = css`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  width: 250px;
-  box-shadow: 0 0 5px 2px #aba9a9;
-  padding: 10px;
-  border-radius: 5px;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 0px 5px 1px grey;
+  gap: 20px;
   cursor: pointer;
 
-  a {
-    display: inherit;
-    flex-wrap: inherit;
-    text-decoration: none;
-    color: black;
+  .imageDiv {
+    position: relative;
+    width: 150px;
+    height: 150px;
+  }
 
-    .imageDiv {
-      position: relative;
-      width: 100%;
-      height: 250px;
-    }
+  .text {
+    display: inline;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    border-left: 1px solid black;
 
-    .text {
-      width: 100%;
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    h3 {
-      margin: 0;
-    }
-
-    span {
-      width: 100%;
-      text-align: center;
-    }
-
-    .stock {
-      width: 100%;
+    a {
       display: inherit;
-      padding: 10px 0;
-      font-weight: 600;
-      justify-content: space-between;
+      flex-wrap: inherit;
+      text-decoration: none;
+      color: black;
+    }
+
+    button {
+      width: 100%;
     }
   }
 
+  h3 {
+    margin: 0;
+  }
+
+  .stock {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+    font-weight: 600;
+    justify-content: space-between;
+  }
+
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px 5px #aba9a9;
+    transform: scale(1.02);
     transition: 0.2s ease;
   }
 
   &:active {
-    transform: scale(1.03);
+    transform: scale(1);
     transition: ease;
   }
 `;
@@ -75,20 +73,27 @@ export function ProductContainer({ productInformation }) {
             objectFit="cover"
           />
         </div>
-        <div className="text">
+      </a>
+      <div className="text">
+        <a
+          href={`/product?id=${encodeURIComponent(
+            productInformation.manufacturer,
+          )}-${encodeURIComponent(productInformation.model)}`}
+        >
           <h3>{productInformation.model}</h3>
           <span className="model">{productInformation.manufacturer}</span>
-        </div>
-        <div className="stock">
-          {productInformation.inStock ? (
-            <span style={{ color: 'Lime' }}>in Stock</span>
-          ) : (
-            <span style={{ color: 'Red' }}>out of Stock</span>
-          )}
-          <span>{productInformation.price} €</span>
-        </div>
-      </a>
-      <button disabled={!productInformation.inStock}>add to cart</button>
+
+          <div className="stock">
+            {productInformation.inStock ? (
+              <span style={{ color: 'Lime' }}>in Stock</span>
+            ) : (
+              <span style={{ color: 'Red' }}>out of Stock</span>
+            )}
+            <span>{productInformation.price} €</span>
+          </div>
+        </a>
+        <button disabled={!productInformation.inStock}>add to cart</button>
+      </div>
     </div>
   );
 }

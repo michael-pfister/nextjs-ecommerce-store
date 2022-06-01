@@ -42,37 +42,6 @@ const globalStyles = css`
   }
 `;
 
-const headerStyles = css`
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  justify-content: space-between;
-  color: white;
-  background-color: black;
-
-  h1 {
-    margin: 0;
-  }
-
-  ul {
-    display: inherit;
-    list-style: none;
-    gap: 20px;
-
-    a {
-      text-decoration: none;
-      color: white;
-    }
-  }
-`;
-
-const footerStyles = css`
-  padding: 10px 20px;
-  color: white;
-  background-color: black;
-  bottom: 0;
-`;
-
 function MyApp({ Component, pageProps }) {
   const [isHome, setIsHome] = useState(true);
 
@@ -84,18 +53,13 @@ function MyApp({ Component, pageProps }) {
     }
   }, [Component.name]);
 
-  console.log(isHome);
   return (
     <div>
       <Global styles={globalStyles} />
-      <Header
-        headerStyles={headerStyles}
-        backgroundColor={isHome ? 'transparent' : 'black'}
-      />
+      <Header textColor={isHome ? 'white' : 'black'} />
       <Component {...pageProps} />
       <Footer
-        footerStyles={footerStyles}
-        backgroundColor={isHome ? 'transparent' : 'black'}
+        textColor={isHome ? 'white' : 'black'}
         position={isHome ? 'absolute' : 'static'}
       />
     </div>

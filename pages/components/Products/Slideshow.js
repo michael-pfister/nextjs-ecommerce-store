@@ -11,10 +11,11 @@ let currentImageIndex = 0;
 
 const slideshowStyles = css`
   position: relative;
+  margin-top: 10px;
   width: 100%;
-  height: 22rem;
-  margin: 2em 0;
+  height: 300px;
   background-color: black;
+  filter: drop-shadow(0 0 5px black);
 
   img {
     animation: identifier 15s infinite;
