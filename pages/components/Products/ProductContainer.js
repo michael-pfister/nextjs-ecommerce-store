@@ -61,25 +61,19 @@ export function ProductContainer({ productInformation }) {
   return (
     <div css={productContainerStyles}>
       <a
-        href={`/product?id=${encodeURIComponent(
-          productInformation.manufacturer,
-        )}-${encodeURIComponent(productInformation.model)}`}
+        href={`/product?id=${encodeURIComponent(productInformation.id)}`}
         data-test-id={`product-${productInformation.manufacturer}-${productInformation.model}`}
       >
         <div className="imageDiv">
           <Image
-            src={productInformation.image}
+            src={productInformation.imagePath}
             layout="fill"
             objectFit="cover"
           />
         </div>
       </a>
       <div className="text">
-        <a
-          href={`/product?id=${encodeURIComponent(
-            productInformation.manufacturer,
-          )}-${encodeURIComponent(productInformation.model)}`}
-        >
+        <a href={`/product?id=${encodeURIComponent(productInformation.id)}`}>
           <h3>{productInformation.model}</h3>
           <span className="model">{productInformation.manufacturer}</span>
 

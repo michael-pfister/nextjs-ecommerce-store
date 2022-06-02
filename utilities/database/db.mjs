@@ -1,3 +1,4 @@
+import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
 
@@ -5,17 +6,15 @@ config();
 
 const sql = postgres(); // will use psql environment variables
 
-console.log(await sql`SELECT * FROM "product"`);
-
-async function getAllProducts() {
-  return await sql`SELECT * FROM "product"`;
+export async function getAllProducts() {
+  return camelcaseKeys(await sql`SELECT * FROM "product"`);
 }
 
-async function getProduct(id) {
+export async function getProduct(id) {
   const [product] = await sql`SELECT * FROM "product" WHERE id = ${id}`;
-  return product;
+  return camelcaseKeys(product);
 }
 
-await sql.end();
+// await sql.end();
 
 export default sql;

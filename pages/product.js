@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
-import { products } from './simulated_data/database';
+import { getProduct } from '../utilities/database/db.mjs';
 
 const productSectionStyles = css`
   display: flex;
@@ -52,8 +52,9 @@ const productSectionStyles = css`
   }
 `;
 
-function getItem(query, products) {
+/* function getItem(query, products) {
   let searchTerms = query.id.split('-');
+  console.log(query);
   const item = products.find((element) => {
     return (
       element.manufacturer === searchTerms[0] &&
@@ -62,25 +63,24 @@ function getItem(query, products) {
   });
 
   return item;
-}
+} */
 
 export default function Product(props) {
-  const item = getItem(props.query, props.products);
   const [quantity, setQuantity] = useState(1);
   return (
     <section css={productSectionStyles}>
       <img
-        src={item.image}
+        src={props.product.imagePath}
         data-test-id="product-image"
-        alt={`${item.manufacturer} ${item.model}`}
+        alt={`${props.product.manufacturer} ${props.product.model}`}
       />
 
       <div className="text">
-        <h1>{item.model}</h1>
-        <span>{item.manufacturer}</span>
+        <h1>{props.product.model}</h1>
+        <span>{props.product.manufacturer}</span>
         <hr />
         <br />
-        {item.inStock ? (
+        {props.product.inStock ? (
           <span style={{ color: 'Lime' }}>in Stock</span>
         ) : (
           <span style={{ color: 'Red' }}>out of Stock</span>
@@ -91,7 +91,7 @@ export default function Product(props) {
           et magnis dis parturient montes, nascetur ridiculus mus.
         </p>
         <br />
-        <span data-test-id="product-price">{item.price} €</span>
+        <span data-test-id="product-price">{props.product.price} €</span>
         <div className="quantityDiv" data-test-id="product-quantity">
           <button
             onClick={() => {
@@ -113,7 +113,7 @@ export default function Product(props) {
         <button
           className="addToCart"
           data-test-id="product-add-to-cart"
-          disabled={!item.inStock}
+          disabled={!props.product.inStock}
         >
           add to cart
         </button>
@@ -122,8 +122,9 @@ export default function Product(props) {
   );
 }
 
-export function getServerSideProps(context) {
+export async function getServerSideProps(context) {
   const query = context.query;
+  const product = await getProduct(query.id);
 
-  return { props: { query, products } };
+  return { props: { product } };
 }

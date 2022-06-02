@@ -1,7 +1,7 @@
 import React from 'react';
+import { getAllProducts } from '../utilities/database/db.mjs';
 import { ProductsGrid } from './components/Products/Productsgrid';
 import { SlideShow } from './components/Products/Slideshow';
-import { products } from './simulated_data/database';
 
 export default function Products(props) {
   return (
@@ -21,7 +21,9 @@ export default function Products(props) {
   );
 }
 
-export function getServerSideProps() {
+export async function getServerSideProps() {
+  const products = await getAllProducts();
+
   return {
     props: { products }, // will be passed to the page component as props
   };
