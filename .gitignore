@@ -39,3 +39,4 @@ yarn-error.log*
 
 # custom
 databaseInfo.txt
+.env
