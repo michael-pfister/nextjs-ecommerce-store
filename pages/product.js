@@ -52,19 +52,6 @@ const productSectionStyles = css`
   }
 `;
 
-/* function getItem(query, products) {
-  let searchTerms = query.id.split('-');
-  console.log(query);
-  const item = products.find((element) => {
-    return (
-      element.manufacturer === searchTerms[0] &&
-      element.model === searchTerms[1]
-    );
-  });
-
-  return item;
-} */
-
 export default function Product(props) {
   const [quantity, setQuantity] = useState(1);
   return (
