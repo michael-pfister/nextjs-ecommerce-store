@@ -5,17 +5,17 @@
  */
 export class CartCookieItem {
   productId: number;
-  productQunatity: number;
+  productQuantity: number;
 
   /** constructor for initializing a new CartCookieItem
    * @param {Number} productId
-   * @param {Number} productQunatity
+   * @param {Number} productQuantity
    *
    * @example const cartCookieItem = new CartCookieItem(1, 1);
    */
-  constructor(productId: number, productQunatity: number) {
+  constructor(productId: number, productQuantity: number) {
     this.productId = productId;
-    this.productQunatity = productQunatity;
+    this.productQuantity = productQuantity;
   }
 }
 
@@ -31,7 +31,7 @@ export class CartCookie {
   cookie: Array<CartCookieItem>;
 
   /** constructor for initializing a new CartCookie
-   * @example let cookie = new CartCookie();
+   * @example const cookie = new CartCookie();
    */
   constructor() {
     const _getCartCookie = this.#getCartCookie();
@@ -57,7 +57,7 @@ export class CartCookie {
 
     for (const index in this.cookie) {
       if (this.cookie[index].productId === cartCookieItem.productId) {
-        this.cookie[index].productQunatity += cartCookieItem.productQunatity;
+        this.cookie[index].productQuantity += cartCookieItem.productQuantity;
         this.#setCartCookie();
         return;
       }
@@ -81,11 +81,11 @@ export class CartCookie {
     for (const index in this.cookie) {
       if (this.cookie[index].productId === cartCookieItem.productId) {
         if (
-          cartCookieItem.productQunatity >= this.cookie[index].productQunatity
+          cartCookieItem.productQuantity >= this.cookie[index].productQuantity
         ) {
           this.cookie.splice(Number(index), 1);
         } else {
-          this.cookie[index].productQunatity -= cartCookieItem.productQunatity;
+          this.cookie[index].productQuantity -= cartCookieItem.productQuantity;
         }
 
         this.#setCartCookie();

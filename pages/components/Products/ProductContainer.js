@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
+import { CartCookie, CartCookieItem } from '../../../utilities/cookies';
 
 const productContainerStyles = css`
   display: flex;
@@ -86,7 +87,16 @@ export function ProductContainer({ productInformation }) {
             <span>{productInformation.price} €</span>
           </div>
         </a>
-        <button disabled={!productInformation.inStock}>add to cart</button>
+        <button
+          disabled={!productInformation.inStock}
+          onClick={() => {
+            new CartCookie().addCartItem(
+              new CartCookieItem(productInformation.id, 1),
+            );
+          }}
+        >
+          add to cart
+        </button>
       </div>
     </div>
   );

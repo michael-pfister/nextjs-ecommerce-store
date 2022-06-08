@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { CartCookie, CartCookieItem } from '../utilities/cookies.ts';
 import { getProduct } from '../utilities/database/db.mjs';
 
 const productSectionStyles = css`
@@ -54,6 +55,7 @@ const productSectionStyles = css`
 
 export default function Product(props) {
   const [quantity, setQuantity] = useState(1);
+
   return (
     <section css={productSectionStyles}>
       <img
@@ -101,6 +103,11 @@ export default function Product(props) {
           className="addToCart"
           data-test-id="product-add-to-cart"
           disabled={!props.product.inStock}
+          onClick={() => {
+            new CartCookie().addCartItem(
+              new CartCookieItem(props.product.id, quantity),
+            );
+          }}
         >
           add to cart
         </button>

@@ -1,5 +1,9 @@
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { CartCookieItem } from '../utilities/cookies';
+import { CartCookie } from '../utilities/cookies.ts';
+import { getAllProducts } from '../utilities/database/db.mjs';
+import ProductContainer from './components/Cart/ProductContainer';
 
 const cartSectionStyles = css`
   margin: 50px 0;
@@ -51,8 +55,27 @@ const cartSectionStyles = css`
   }
 `;
 
-export default function Cart() {
+function Total({ products, cartCookie }) {
+  let amount = 0;
+
+  for (const product of products) {
+    for (const cartCookieItem of cartCookie) {
+      if (cartCookieItem.productId === product.id) {
+        amount += cartCookieItem.productQuantity * product.price;
+      }
+    }
+  }
+
+  return <span>{Math.round(amount * 100) / 100} €</span>;
+}
+
+export default function Cart(props) {
   const [shippingInput, setShippingInput] = useState([true, false, false]);
+  const [cartCookie, setCartCookie] = useState({ cookie: [] });
+
+  useEffect(() => {
+    setCartCookie(new CartCookie());
+  }, []);
 
   return (
     <section css={cartSectionStyles}>
@@ -66,25 +89,40 @@ export default function Cart() {
           <li>Subtotal</li>
         </ul>
         <hr />
-        <button>refresh cart</button>
+        <div>
+          {cartCookie.cookie.map((cartCookieItem) => {
+            return (
+              <ProductContainer
+                key={`cart_item-${cartCookieItem.productId}`}
+                productQuantity={cartCookieItem.productQuantity}
+                product={props.products.find((product) => {
+                  return product.id === cartCookieItem.productId;
+                })}
+                setCartCookie={setCartCookie}
+              />
+            );
+          })}
+        </div>
+        <button
+          onClick={() => {
+            setCartCookie(new CartCookie());
+          }}
+        >
+          refresh cart
+        </button>
       </div>
       <div className="cartTotalDiv">
         <h1>Cart Totals</h1>
         <hr />
         <div>
-          <span>Subtotal</span>
-          <span>€€€</span>
-        </div>
-        <hr />
-        <div>
-          <span>Shipping</span>
+          <span>Free Shipping</span>
           <ul>
             <li>
               Österreichische Post
               <input
                 type="radio"
                 checked={shippingInput[0]}
-                onClick={() => {
+                onChange={() => {
                   setShippingInput([true, false, false]);
                 }}
               />
@@ -94,7 +132,7 @@ export default function Cart() {
               <input
                 type="radio"
                 checked={shippingInput[1]}
-                onClick={() => {
+                onChange={() => {
                   setShippingInput([false, true, false]);
                 }}
               />
@@ -104,7 +142,7 @@ export default function Cart() {
               <input
                 type="radio"
                 checked={shippingInput[2]}
-                onClick={() => {
+                onChange={() => {
                   setShippingInput([false, false, true]);
                 }}
               />
@@ -114,10 +152,16 @@ export default function Cart() {
         <hr />
         <div>
           <span>Total</span>
-          <span>€€€</span>
+          <Total products={props.products} cartCookie={cartCookie.cookie} />
         </div>
         <button>proceed to checkout</button>
       </div>
     </section>
   );
+}
+
+export async function getServerSideProps() {
+  const products = await getAllProducts();
+
+  return { props: { products: products } };
 }
