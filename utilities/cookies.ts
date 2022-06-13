@@ -98,6 +98,18 @@ export class CartCookie {
     );
   }
 
+  /** Returns the amount of items in the shopping cart
+   * @example cookie.getCartItemCount();
+   */
+  getCartItemCount() {
+    let count: number = 0;
+    for (const { productQuantity } of this.cookie) {
+      count += productQuantity;
+    }
+
+    return count;
+  }
+
   #getCartCookie() {
     type DocumentCookies = {
       [key: string]: string;

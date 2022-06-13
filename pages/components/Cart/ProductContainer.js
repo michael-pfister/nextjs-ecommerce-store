@@ -55,6 +55,9 @@ const productContainerStyles = css`
 `;
 
 export default function ProductContainer(props) {
+  let optionsArray = [1, 2, 3, 4, 5];
+  props.productQuantity > 5 && optionsArray.push(props.productQuantity);
+
   return (
     <div css={productContainerStyles}>
       <div className="imageDiv">
@@ -78,9 +81,10 @@ export default function ProductContainer(props) {
                   ),
                 );
                 props.setCartCookie(new CartCookie());
+                props.setCartItemCount(new CartCookie().getCartItemCount());
               }}
             >
-              {[1, 2, 3, 4, 5].map((element) => (
+              {optionsArray.map((element) => (
                 <option
                   key={`products-${props.product.id}-quantitySelection-${element}`}
                 >
@@ -102,6 +106,7 @@ export default function ProductContainer(props) {
               new CartCookieItem(props.product.id, props.productQuantity),
             );
             props.setCartCookie(new CartCookie());
+            props.setCartItemCount(new CartCookie().getCartItemCount());
           }}
         >
           remove from cart

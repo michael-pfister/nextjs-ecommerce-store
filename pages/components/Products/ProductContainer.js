@@ -1,6 +1,9 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
+import { productionBrowserSourceMaps } from '../../../next.config';
 import { CartCookie, CartCookieItem } from '../../../utilities/cookies';
+import Cart from '../../cart';
+import { Header } from '../PageLayout/Header';
 
 const productContainerStyles = css`
   display: flex;
@@ -58,7 +61,7 @@ const productContainerStyles = css`
   }
 `;
 
-export function ProductContainer({ productInformation }) {
+export function ProductContainer({ productInformation, setCartItemCount }) {
   return (
     <div css={productContainerStyles}>
       <a
@@ -93,6 +96,7 @@ export function ProductContainer({ productInformation }) {
             new CartCookie().addCartItem(
               new CartCookieItem(productInformation.id, 1),
             );
+            setCartItemCount(new CartCookie().getCartItemCount());
           }}
         >
           add to cart

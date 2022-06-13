@@ -107,6 +107,7 @@ export default function Product(props) {
             new CartCookie().addCartItem(
               new CartCookieItem(props.product.id, quantity),
             );
+            props.setCartItemCount(new CartCookie().getCartItemCount());
           }}
         >
           add to cart

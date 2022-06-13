@@ -11,11 +11,13 @@ export default function Products(props) {
         products={props.products.slice(0, 2)}
         heading="Featured"
         gridColumns={2}
+        setCartItemCount={props.setCartItemCount}
       />
       <ProductsGrid
         products={props.products}
         heading="All Products"
         gridColumns={3}
+        setCartItemCount={props.setCartItemCount}
       />
     </div>
   );

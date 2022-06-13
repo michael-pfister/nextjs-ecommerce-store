@@ -17,22 +17,23 @@ const featuredStyles = css`
   }
 `;
 
-export function ProductsGrid({ products, heading, gridColumns }) {
+export function ProductsGrid(props) {
   return (
     <section css={featuredStyles}>
-      <h1>{heading}</h1>
+      <h1>{props.heading}</h1>
       <div
         css={css`
           display: grid;
-          grid-template-columns: repeat(${gridColumns}, 1fr);
+          grid-template-columns: repeat(${props.gridColumns}, 1fr);
           gap: 30px;
         `}
       >
-        {products.map((product) => {
+        {props.products.map((product) => {
           return (
             <ProductContainer
               key={`${product.manufacturer}-${product.model}`}
               productInformation={product}
+              setCartItemCount={props.setCartItemCount}
             />
           );
         })}

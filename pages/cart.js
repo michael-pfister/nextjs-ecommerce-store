@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { CartCookieItem } from '../utilities/cookies';
 import { CartCookie } from '../utilities/cookies.ts';
@@ -55,7 +56,7 @@ const cartSectionStyles = css`
   }
 `;
 
-function Total({ products, cartCookie }) {
+export function Total({ products, cartCookie }) {
   let amount = 0;
 
   for (const product of products) {
@@ -99,6 +100,7 @@ export default function Cart(props) {
                   return product.id === cartCookieItem.productId;
                 })}
                 setCartCookie={setCartCookie}
+                setCartItemCount={props.setCartItemCount}
               />
             );
           })}
@@ -154,7 +156,10 @@ export default function Cart(props) {
           <span>Total</span>
           <Total products={props.products} cartCookie={cartCookie.cookie} />
         </div>
-        <button>proceed to checkout</button>
+
+        <Link href="/checkout">
+          <button>proceed to checkout</button>
+        </Link>
       </div>
     </section>
   );

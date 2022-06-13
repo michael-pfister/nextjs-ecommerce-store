@@ -1,5 +1,5 @@
 import { css, Global } from '@emotion/react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer } from './components/PageLayout/Footer';
 import { Header } from './components/PageLayout/Header';
 
@@ -44,6 +44,7 @@ const globalStyles = css`
 
 function MyApp({ Component, pageProps }) {
   const [isHome, setIsHome] = useState(true);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
     if (Component.name !== 'Home') {
@@ -56,8 +57,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <Global styles={globalStyles} />
-      <Header textColor={isHome ? 'white' : 'black'} />
-      <Component {...pageProps} />
+      <Header
+        textColor={isHome ? 'white' : 'black'}
+        cartItemCount={cartItemCount}
+        setCartItemCount={setCartItemCount}
+      />
+      <Component {...pageProps} setCartItemCount={setCartItemCount} />
       <Footer
         textColor={isHome ? 'white' : 'black'}
         position={isHome ? 'absolute' : 'static'}
