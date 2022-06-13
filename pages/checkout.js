@@ -121,7 +121,11 @@ export default function Checkout(props) {
         <CartOverview products={props.products} />
         <button
           onClick={() => {
-            setIsDelivery(!isDelivery);
+            if (!isDelivery) {
+              window.location.href = '/thank_you';
+            } else {
+              setIsDelivery(!isDelivery);
+            }
           }}
           disabled={!isFilledOut}
         >
