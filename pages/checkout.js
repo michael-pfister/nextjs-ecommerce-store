@@ -122,6 +122,7 @@ export default function Checkout(props) {
         <button
           onClick={() => {
             if (!isDelivery) {
+              document.cookie = 'CartCookie=[]';
               window.location.href = '/thank_you';
             } else {
               setIsDelivery(!isDelivery);
