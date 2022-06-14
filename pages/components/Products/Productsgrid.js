@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { ProductContainer } from './ProductContainer';
+import ProductContainer from './ProductContainer';
 
 const featuredStyles = css`
   margin: 2em 0;

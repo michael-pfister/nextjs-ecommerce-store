@@ -1,7 +1,7 @@
 import React from 'react';
 import { getAllProducts } from '../utilities/database/db.mjs';
-import { ProductsGrid } from './components/Products/Productsgrid';
-import { SlideShow } from './components/Products/Slideshow';
+import ProductsGrid from './components/Products/Productsgrid';
+import SlideShow from './components/Products/Slideshow';
 
 export default function Products(props) {
   return (
