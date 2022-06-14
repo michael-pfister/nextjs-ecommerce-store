@@ -27,7 +27,7 @@ const headerStyles = css`
   }
 `;
 
-export function Header(props) {
+export default function Header(props) {
   useEffect(() => {
     props.setCartItemCount(new CartCookie().getCartItemCount());
     /* setInterval(() => {

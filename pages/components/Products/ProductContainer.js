@@ -61,7 +61,10 @@ const productContainerStyles = css`
   }
 `;
 
-export function ProductContainer({ productInformation, setCartItemCount }) {
+export default function ProductContainer({
+  productInformation,
+  setCartItemCount,
+}) {
   return (
     <div css={productContainerStyles}>
       <a

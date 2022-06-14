@@ -7,7 +7,7 @@ const footerStyles = css`
   bottom: 0;
 `;
 
-export function Footer(props) {
+export default function Footer(props) {
   return (
     <footer
       id="footer"

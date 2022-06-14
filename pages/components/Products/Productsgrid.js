@@ -17,7 +17,7 @@ const featuredStyles = css`
   }
 `;
 
-export function ProductsGrid(props) {
+export default function ProductsGrid(props) {
   return (
     <section css={featuredStyles}>
       <h1>{props.heading}</h1>

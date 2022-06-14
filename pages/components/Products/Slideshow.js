@@ -49,7 +49,7 @@ function changeImage(setBanner) {
   setBanner(imageSrcs[currentImageIndex]);
 }
 
-export function SlideShow() {
+export default function SlideShow() {
   const [banner, setBanner] = useState('/images/slideshow/RTX-30-Series.jpg');
 
   useEffect(() => {
