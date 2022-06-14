@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import { CartCookieItem } from '../utilities/cookies';
+import { useEffect, useState } from 'react';
 import { CartCookie } from '../utilities/cookies.ts';
 import { getAllProducts } from '../utilities/database/db.mjs';
 import ProductContainer from './components/Cart/ProductContainer';

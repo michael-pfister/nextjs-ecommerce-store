@@ -59,7 +59,6 @@ const product = [
 
 exports.up = async function (sql) {
   // with `postgres` :: DB === sql``
-  // console.log(await sql`select * from "product"`);
 
   await sql`CREATE TABLE "product" (
 		id SERIAL PRIMARY KEY,
