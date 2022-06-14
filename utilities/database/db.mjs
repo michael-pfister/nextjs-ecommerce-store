@@ -1,7 +1,6 @@
 import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
-import { excludeDefaultMomentLocales } from '../../next.config';
 import setPostgresDefaultsOnHeroku from '../setPostgresDefaultsOnHeroku';
 
 setPostgresDefaultsOnHeroku();

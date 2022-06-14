@@ -55,7 +55,11 @@ const productContainerStyles = css`
 `;
 
 export default function ProductContainer(props) {
-  let optionsArray = [1, 2, 3, 4, 5];
+  if (!props) {
+    props = null;
+  }
+
+  const optionsArray = [1, 2, 3, 4, 5];
   props.productQuantity > 5 && optionsArray.push(props.productQuantity);
 
   return (

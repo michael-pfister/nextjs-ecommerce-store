@@ -118,7 +118,6 @@ export default function Product(props) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(context);
   const product = await getProduct(context.query.productId);
 
   return { props: { product } };
