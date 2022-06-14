@@ -68,7 +68,7 @@ export default function ProductContainer({
   return (
     <div css={productContainerStyles}>
       <a
-        href={`/product?id=${encodeURIComponent(productInformation.id)}`}
+        href={`/products/${encodeURIComponent(productInformation.id)}`}
         data-test-id={`product-${productInformation.manufacturer}-${productInformation.model}`}
       >
         <div className="imageDiv">
@@ -80,7 +80,7 @@ export default function ProductContainer({
         </div>
       </a>
       <div className="text">
-        <a href={`/product?id=${encodeURIComponent(productInformation.id)}`}>
+        <a href={`/products/${encodeURIComponent(productInformation.id)}`}>
           <h3>{productInformation.model}</h3>
           <span className="model">{productInformation.manufacturer}</span>
 

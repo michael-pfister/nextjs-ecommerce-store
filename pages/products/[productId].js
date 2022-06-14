@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
-import { CartCookie, CartCookieItem } from '../utilities/cookies.ts';
-import { getProduct } from '../utilities/database/db.mjs';
+import { CartCookie, CartCookieItem } from '../../utilities/cookies.ts';
+import { getProduct } from '../../utilities/database/db.mjs';
 
 const productSectionStyles = css`
   display: flex;
@@ -118,8 +118,8 @@ export default function Product(props) {
 }
 
 export async function getServerSideProps(context) {
-  const query = context.query;
-  const product = await getProduct(query.id);
+  console.log(context);
+  const product = await getProduct(context.query.productId);
 
   return { props: { product } };
 }
