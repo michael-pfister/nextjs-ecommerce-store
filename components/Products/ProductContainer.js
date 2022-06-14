@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import { productionBrowserSourceMaps } from '../../../next.config';
-import { CartCookie, CartCookieItem } from '../../../utilities/cookies';
-import Cart from '../../cart';
+import { productionBrowserSourceMaps } from '../../next.config';
+import Cart from '../../pages/cart';
+import { CartCookie, CartCookieItem } from '../../utilities/cookies';
 import { Header } from '../PageLayout/Header';
 
 const productContainerStyles = css`

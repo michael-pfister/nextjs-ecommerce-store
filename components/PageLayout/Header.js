@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { CartCookie } from '../../../utilities/cookies';
+import { CartCookie } from '../../utilities/cookies';
 
 const headerStyles = css`
   display: flex;

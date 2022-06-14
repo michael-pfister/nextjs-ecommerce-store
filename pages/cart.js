@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import ProductContainer from '../components/Cart/ProductContainer';
 import { CartCookie } from '../utilities/cookies.ts';
 import { getAllProducts } from '../utilities/database/db.mjs';
-import ProductContainer from './components/Cart/ProductContainer';
 
 const cartSectionStyles = css`
   margin: 50px 0;

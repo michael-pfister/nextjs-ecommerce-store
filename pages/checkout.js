@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
+import CartOverview from '../components/Checkout/CartOverview';
+import Delivery from '../components/Checkout/Delivery';
+import Payment from '../components/Checkout/Payment';
 import { getAllProducts } from '../utilities/database/db.mjs';
-import CartOverview from './components/Checkout/CartOverview';
-import Delivery from './components/Checkout/Delivery';
-import Payment from './components/Checkout/Payment';
 
 const checkoutStyles = css`
   display: flex;

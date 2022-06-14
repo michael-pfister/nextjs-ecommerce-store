@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import { CartCookie, CartCookieItem } from '../../../utilities/cookies';
+import { CartCookie, CartCookieItem } from '../../utilities/cookies';
 
 const productContainerStyles = css`
   display: flex;
@@ -55,10 +55,6 @@ const productContainerStyles = css`
 `;
 
 export default function ProductContainer(props) {
-  if (!props) {
-    props = null;
-  }
-
   const optionsArray = [1, 2, 3, 4, 5];
   props.productQuantity > 5 && optionsArray.push(props.productQuantity);
 

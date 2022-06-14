@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { CartCookie } from '../../../utilities/cookies';
-import { Total } from '../../cart';
+import { Total } from '../../pages/cart';
+import { CartCookie } from '../../utilities/cookies';
 
 const headerStyles = css`
   display: flex;
